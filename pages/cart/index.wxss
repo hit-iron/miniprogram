@@ -1,1 +1,3 @@
-/* pages/cart/index.wxss */
+.cart image {
+  width: 300rpx;
+}
