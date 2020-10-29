@@ -16,9 +16,9 @@ Page({
   Cates: [],
   // 获取分类数据
   getCategoryList() {
-    request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/categories" })
+    request({ url: "/categories" })
       .then(res => {
-        this.Cates = res.data.message;
+        this.Cates = res;
         // 把接口的数据存入到本地存储中
         wx.setStorageSync("cates", { time: Date.now(), data: this.Cates });
         let leftMenuList = this.Cates.map(v => v.cat_name);

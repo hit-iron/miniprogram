@@ -46,12 +46,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -67,6 +61,13 @@
           "id": -1,
           "name": "分类页面",
           "pathName": "pages/category/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goods_list/index",
+          "pathName": "pages/goods_list/index",
+          "query": "cid=5",
           "scene": null
         }
       ]
