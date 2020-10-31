@@ -1,6 +1,6 @@
 import { request } from "../../request/index.js";
 import regeneratorRuntime from '../../lib/runtime/runtime.js';
-import { getSetting, openSetting, chooseAddress, showModal } from "../../utils/asyncWx.js"
+import { getSetting, openSetting, chooseAddress, showModal, showToast } from "../../utils/asyncWx.js"
 Page({
 
   /**
@@ -83,6 +83,22 @@ Page({
       cart[index].num += operation;
       this.setCart(cart);
     }
+  },
+  // 结算事件
+  async handlePay() {
+    const { address, totalNum } = this.data;
+    if (!address.userName) {
+      await showToast({ title: "您还没有选择收货地址" });
+      return;
+    }
+    if (totalNum === 0) {
+      await showToast({ title: "您还没有选购商品" });
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/pay/index'
+    });
+
   },
   /**
    * 生命周期函数--监听页面加载

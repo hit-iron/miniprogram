@@ -1,1 +1,75 @@
-/* pages/pay/index.wxss */
+.address_recive {
+  display: flex;
+}
+.address_recive .address_all {
+  flex: 4;
+  padding: 10rpx;
+}
+.address_recive .address_phone {
+  flex: 2;
+  padding: 10rpx;
+  text-align: right;
+}
+.cart_main .cart_title {
+  height: 90rpx;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid red;
+  border-top: 1rpx solid red;
+  line-height: 90rpx;
+  padding-left: 10rpx;
+}
+.cart_main .cart_concent .goods_info {
+  display: flex;
+  border-bottom: 1rpx solid #ccc;
+}
+.cart_main .cart_concent .goods_info .item_img {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_main .cart_concent .goods_info .item_img image {
+  width: 80%;
+}
+.cart_main .cart_concent .goods_info .item_info {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cart_main .cart_concent .goods_info .item_info .item_row {
+  display: flex;
+  justify-content: space-between;
+}
+.cart_main .cart_concent .goods_info .item_info .item_row .item_price {
+  color: var(--themeColor);
+}
+.cart_main .cart_concent .goods_info .item_info .item_row .item_num {
+  padding-right: 10rpx;
+}
+.footer_tool {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 90rpx;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+}
+.footer_tool .left {
+  flex: 5;
+  text-align: right;
+  padding-right: 10rpx;
+}
+.footer_tool .left .heji .price_text {
+  color: var(--themeColor);
+}
+.footer_tool .pay {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  background-color: var(--themeColor);
+  color: #fff;
+}

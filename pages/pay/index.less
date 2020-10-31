@@ -1,0 +1,95 @@
+.address_recive {
+  display: flex;
+  .address_all {
+    flex: 4;
+    padding: 10rpx;
+    .address_name {
+      
+    }
+
+    .address_info {
+
+    }
+  }
+
+  .address_phone {
+    flex: 2;
+    padding: 10rpx;
+    text-align: right;
+  }
+}
+
+
+.cart_main {
+  .cart_title {
+    height: 90rpx;
+    font-size: 32rpx;
+    border-bottom: 1rpx solid red;
+    border-top: 1rpx solid red;
+    line-height: 90rpx;
+    padding-left: 10rpx;
+  }
+
+  .cart_concent {
+    .goods_info {
+      display: flex;
+      border-bottom: 1rpx solid #ccc;
+     .item_img {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image {
+          width: 80%;
+        }
+      }
+
+      .item_info {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .item_name{}
+        .item_row{
+          display: flex;
+          justify-content: space-between;
+          .item_price{
+            color: var(--themeColor);
+          }
+          .item_num{
+            padding-right: 10rpx;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer_tool {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 90rpx;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  .left {
+    flex: 5;
+    text-align: right;
+    padding-right: 10rpx;
+    .heji {
+      .price_text{
+        color:var(--themeColor);
+      }
+    }
+  }
+  .pay {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+    background-color: var(--themeColor);
+    color: #fff;
+  }
+}

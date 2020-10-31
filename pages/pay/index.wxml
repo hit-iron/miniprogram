@@ -1,2 +1,40 @@
-<!--pages/pay/index.wxml-->
-<text>pages/pay/index.wxml</text>
+<!-- 地址 -->
+<view class="address_recive">
+  <view class="address_all">
+    <view class="address_name">{{address.userName}}</view>
+    <view class="address_info">{{address.all}}</view>
+  </view>
+  <view class="address_phone">{{address.telNumber}}</view>
+</view>
+<!-- 购物车 -->
+<view class="cart_main">
+  <view class="cart_title">购物车</view>
+  <!-- 商品 -->
+  <view class="cart_concent">
+    <view class="goods_info" wx:for="{{cart}}" wx:key="goods_id">
+      <!-- 图片 -->
+      <view class="item_img">
+        <image class="" src="{{item.goods_small_logo}}" mode="widthFix"></image>
+      </view>
+      <!-- 商品信息 -->
+      <view class="item_info">
+        <view class="item_name">{{item.goods_name}}</view>
+        <view class="item_row">
+          <view class="item_price">￥{{item.goods_price}}</view>
+          <view class="item_num">X{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+  <view class="left">
+    <view class="heji">
+      合计：
+      <text class="price_text">￥{{totalPrice}}</text>
+    </view>
+    <view>包含运费</view>
+  </view>
+  <view class="pay" bindtap="handleOrderPay">支付({{totalNum}})</view>
+</view>
