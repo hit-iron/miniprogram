@@ -2,25 +2,34 @@
 import { request } from "../../request/index.js"
 Page({
   data: {
-    swiperList: [],
+    swiperList: [{
+      img: "https://api-hmugo-web.itheima.net/pyg/banner1.png",
+      navigator_url: "/pages/goods_list/index?cid=929"
+    }, {
+      img: "https://api-hmugo-web.itheima.net/pyg/banner2.png",
+      navigator_url: "/pages/goods_list/index?cid=12"
+    }, {
+      img: "https://api-hmugo-web.itheima.net/pyg/banner3.png",
+      navigator_url: "/pages/goods_list/index?cid=421"
+    }],
     cateList: [],
     floorList: []
   },
   //options(Object)
   onLoad: function (options) {
-    this.getSwiperList();
+    // this.getSwiperList();
     this.getCateList();
     this.getFloorList()
   },
   // 获取轮播图数据
-  getSwiperList() {
-    request({ url: "/home/swiperdata" })
-      .then(result => {
-        this.setData({
-          swiperList: result
-        })
-      })
-  },
+  // getSwiperList() {
+  //   request({ url: "/home/swiperdata" })
+  //     .then(result => {
+  //       this.setData({
+  //         swiperList: result
+  //       })
+  //     })
+  // },
   // 获取分类导航数据
   getCateList() {
     request({ url: "/home/catitems" })
@@ -38,33 +47,5 @@ Page({
           floorList: result
         })
       })
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
-
-  },
-  onPageScroll: function () {
-
-  },
-  //item(index,pagePath,text)
-  onTabItemTap: function (item) {
-
   }
 });

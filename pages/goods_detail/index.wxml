@@ -12,8 +12,8 @@
     <view class="goods_price">￥{{goodsObj.goods_price}}</view>
     <view class="goods_name_row">
       <view class="goods_name">{{goodsObj.goods_name}}</view>
-      <view class="goods_collect">
-        <text class="iconfont icon-shoucang1"></text>
+      <view class="goods_collect" bindtap="handleCollect">
+        <text class="iconfont {{isCollect?'icon-collection-b':'icon-shoucang1'}}"></text>
         <view class="collect_text">收藏</view>
       </view>
     </view>
@@ -39,7 +39,7 @@
         <view class="item_text">购物车</view>
       </navigator>
       <view class=" add" bindtap="handleCartAdd">加入购物车</view>
-      <view class=" buy">立即购买</view>
+      <view class=" buy" bindtap="handleGoodBuy">立即购买</view>
     </view>
   </view>
 </view>

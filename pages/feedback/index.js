@@ -1,66 +1,114 @@
-// pages/feedback/index.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    tabs: [
+      {
+        id: 0,
+        title: "体验问题",
+        isActive: true
+      },
+      {
+        id: 1,
+        title: "商品、商家投诉",
+        isActive: false
+      }
+    ],
+    chooseImgs: [],
+    textVal: ""
 
   },
+  UpLoadImgs: [],
+  handleTabsItemChange(e) {
+    const { index } = e.detail;
+    let { tabs } = this.data;
+    tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
+    this.setData({
+      tabs
+    })
+  },
+  // 点击 “+” 选择图片
+  handleChooseImg() {
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: (result) => {
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+        this.setData({
+          chooseImgs: [...this.data.chooseImgs, ...result.tempFilePaths]
+        })
+      }
+    });
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 点击 自定义图片组件
+  handleRemoveImg(e) {
+    const { index } = e.currentTarget.dataset;
+    let { chooseImgs } = this.data;
+    chooseImgs.splice(index, 1);
+    this.setData({
+      chooseImgs
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handleTextInput(e) {
+    this.setData({
+      textVal: e.detail.value
+    })
   },
+  // 提交按钮的点击
+  handleFormSubmit() {
+    const { textVal, chooseImgs } = this.data;
+    if (!textVal.trim()) {
+      wx.showToast({
+        title: '输入不合法',
+        icon: 'none',
+        mask: true
+      });
+      return;
+    }
+    wx.showLoading({
+      title: "正在上传中",
+      mask: true
+    });
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    // 判断有没有需要上传的图片数组
 
-  },
+    if (chooseImgs.length != 0) {
+      chooseImgs.forEach((v, i) => {
+        wx.uploadFile({
+          url: 'https://images.ac.cn/Home/Index/UploadAction/',
+          filePath: v,
+          name: "file",
+          formData: {},
+          success: (result) => {
+            console.log(result);
+            let url = JSON.parse(result.data).url;
+            this.UpLoadImgs.push(url);
+            if (i === chooseImgs.length - 1) {
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+              wx.hideLoading();
 
-  },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+              console.log("把文本的内容和外网的图片数组 提交到后台中");
+              this.setData({
+                textVal: "",
+                chooseImgs: []
+              })
+              wx.navigateBack({
+                delta: 1
+              });
 
-  },
+            }
+          }
+        });
+      })
+    } else {
+      wx.hideLoading();
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+      console.log("只是提交了文本");
+      wx.navigateBack({
+        delta: 1
+      });
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    }
   }
 })
